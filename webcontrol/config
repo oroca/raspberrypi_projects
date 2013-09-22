@@ -1,0 +1,13 @@
+[SCRIPTS]
+myscript = /home/pi/ws/webcontrol/webcontrol.py
+
+[HTTP]
+enabled = true
+port = 8000
+passwd-file = /etc/webiopi/passwd
+doc-root = /home/pi/ws/webcontrol
+
+[COAP]
+enabled = true
+port = 5683
+multicast = true

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> <html> <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content = "height = device-height, width = 420, user-scalable = no" />
+    <title>webcontrol</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+
+    <script type="text/javascript">
+    webiopi().ready(function() {
+        var content, button;
+        content = $("#content");
+                        
+        button = webiopi().createMacroButton("ledon", "LED ON", "led_on");
+        content.append(button);
+        
+        button = webiopi().createMacroButton("ledoff", "LED Off", "led_off");
+        content.append(button);
+
+        button = webiopi().createAngleSlider(23);
+        content.append(button);
+
+        button = webiopi().createAngleSlider(24);
+        content.append(button);
+    });
+    </script>
+    
+    <style type="text/css">
+        button {
+                display: block;
+                margin: 5px 5px 5px 5px;
+                width: 320px;
+                height: 45px;
+                font-size: 24pt;
+                font-weight: bold;
+                color: black;
+        }
+        
+        input[type="range"] {
+                display: block;
+                width: 320px;
+                height: 45px;
+        }
+    </style> </head> <body>
+    <div id="content" align="center">
+        <img width="320" height="240" src="http://192.168.4.190:8001/?action=stream"><br/>
+    </div> </body>
+</html>
