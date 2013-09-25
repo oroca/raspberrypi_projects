@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RC-CAR Controller</title>
+        <meta name="viewport" content="width=200, initial-scale=1, maximum-scale=1">
+    </head>
+    
+    <body>
+    	<div align="center" style="margin: 0 0 10px 10px">
+            <ul >
+                <input type="button" style=font-size:20pt;width:70;height:60; value="↑" onClick="cmd('GO')">
+            </ul>
+            <ul >
+                <input type="button" style=font-size:20pt;width:70;height:60 value="←" onClick="cmd('LEFT')">
+                <input type="button" style=font-size:20pt;width:70;height:60 value="X" onClick="cmd('STOP')">
+                <input type="button" style=font-size:20pt;width:70;height:60 value="→" onClick="cmd('RIGHT')"> 
+            </ul>
+            <ul >
+                <input type="button" style=font-size:20pt;width:70;height:60 value="↓" onClick="cmd('BACK')"> 
+            </ul>
+        </div>
+        
+        <script type="text/javascript">
+            function cmd(value) {
+                if( window.XMLHttpRequest ) {
+                    request = new XMLHttpRequest();
+                }
+
+                if( !request ) {
+                    alert("XMLHttpRequest Error");	
+                    return false;
+                }
+                
+                var send = 'cmd=' + value;
+                request.open('POST','/rccar',true);
+
+                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                request.setRequestHeader('Content-Length', send.length);
+                request.setRequestHeader('Connection', 'close');
+                request.send(send);
+            }
+        </script>
+    </body>
+</html>
