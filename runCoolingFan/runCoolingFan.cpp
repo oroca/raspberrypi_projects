@@ -14,8 +14,7 @@
 
 #define FAN 18
 
-int main (void)
-{
+int main (void) {
   FILE  *fp;
   int    fd;
 
@@ -30,15 +29,14 @@ int main (void)
   int   buf_size = 10;
   float shiftfloat = (float)(1<<SI_LOAD_SHIFT);
 
-  if (wiringPiSetupGpio () == -1)
+  if (wiringPiSetupGpio() == -1)
     return 1 ;
 
   fd=lcdInit(2,16,4,RS,EN,DB4,DB5,DB6,DB7,0,0,0,0);
   
   pinMode(FAN, OUTPUT) ;
   
-  while(1)
-  {
+  while (1) {
     lcdClear(fd);
 
     if(sysinfo(&sys_info) != 0)
@@ -49,8 +47,7 @@ int main (void)
     unsigned int mins  = (sys_info.uptime / 60) - (days * 1440) - (hours * 60);
     sprintf(uptimeInfo, "Run %dD%dH%dM", days, hours, mins);
 
-    if(fp = fopen( "/sys/class/thermal/thermal_zone0/temp", "r"))
-    {
+    if (fp = fopen( "/sys/class/thermal/thermal_zone0/temp", "r")) {
       fgets(buf, buf_size, fp);
       fclose(fp);
     }
@@ -79,4 +76,3 @@ int main (void)
   }
   return 0 ;
 }
-
