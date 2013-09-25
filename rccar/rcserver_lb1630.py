@@ -3,33 +3,21 @@ import sys
 import RPi.GPIO as gpio
 import time
 
-HOST = '192.168.0.6' # RC카 라즈베리파이 IP값으로 변경필요.
+HOST = '192.168.0.9' # RC카 라즈베리파이 IP값으로 변경필요
 PORT = 10000
 TIME_OUT = 100
 
-#Motor 1 Enable GPIO Pin
-IC12EN = 23
-
-#Motor 2 Enable GPIO Pin
-IC34EN = 24
-
 #Motor 1 GPIO Pin
-IC1A = 28
-IC2A = 31
+IC1A = 22
+IC2A = 27
 
 #Motor 2 GPIO Pin
-IC3A = 29
-IC4A = 30
+IC3A = 4
+IC4A = 17
 
 gpio.cleanup()
 
 gpio.setmode(gpio.BCM)
-
-#Motor 1,2 Enable
-gpio.setup(IC12EN, gpio.OUT)
-gpio.output(IC12EN, gpio.LOW)
-gpio.setup(IC34EN, gpio.OUT)
-gpio.output(IC34EN, gpio.LOW)
 
 #Motor Pin Setup
 gpio.setup(IC1A, gpio.OUT)
@@ -141,14 +129,6 @@ def run_motor(rcvStr):
         print 'GPIO Stop Back Wheel'
         gpio.output(IC3A, gpio.LOW)
         gpio.output(IC4A, gpio.LOW)
-    elif ( rcvStr == 'ee' ):
-        print 'Motor Enable'
-        gpio.output(IC12EN, gpio.HIGH)
-        gpio.output(IC34EN, gpio.HIGH)
-    elif ( rcvStr == 'dd' ):
-        print 'Motor Disable'
-        gpio.output(IC12EN, gpio.LOW)
-        gpio.output(IC34EN, gpio.LOW)
 
 if __name__ == "__main__":
     main()

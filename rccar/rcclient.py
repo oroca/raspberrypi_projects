@@ -5,7 +5,7 @@ s = None
 pipe = None
 
 def main():
-    host = '192.168.0.6' # RC카 라즈베리파이 IP값으로 변경필요.
+    host = '192.168.0.6' # RC카 라즈베리파이 IP값으로 변경필요
     port = 10000
 
     global s
@@ -21,9 +21,6 @@ def main():
     s.connect((host,port))
     print 'connection End'
     sys.stdout.write('%')
-
-    #joyinit()
-    #print 'joyinit() OK'
 
     data = ' '
     while 1:
